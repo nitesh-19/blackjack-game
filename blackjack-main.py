@@ -63,7 +63,7 @@ def play_blackjack():
 def deal_cards(current_deck):
     """Takes input as a dictionary of 52 cards. randomly picks and returns one card without replacement in the
     dictionary. """
-    card_no = random.randint(0, 51)
+    card_no = random.randint(0, 52)
     if card_no not in current_deck:
         return deal_cards(current_deck)
     else:
