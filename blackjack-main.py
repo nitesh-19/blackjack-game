@@ -4,9 +4,7 @@ from art import logo
 def play_blackjack():
     """Starts the game of blackjack"""
 
-    print("####CLEAR####")
     print(logo)
-    deck = {}
     deck = {
         0: 'A', 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7,
         7: 8, 8: 9, 9: 10, 10: 'J', 11: 'Q', 12: 'K',
@@ -22,8 +20,8 @@ def play_blackjack():
     for card in range(0, 2):
         computer_hand.append(deal_cards(current_deck=deck))
         player_hand.append(deal_cards(current_deck=deck))
-    print(f"Your cards: {player_hand}      Current total = {current_score(hand=player_hand)}")
-    print(f"Computer's first card: [{computer_hand[0]}]")
+    print(f"Your cards: \033[93m{player_hand}\033[0m      Current total = \033[93m{current_score(hand=player_hand)}\033[0m")
+    print(f"Computer's first card: \033[93m[{computer_hand[0]}]\033[0m")
 
     draw_or_pass = "y"
     while draw_or_pass == "y":
@@ -32,8 +30,8 @@ def play_blackjack():
             break
         elif draw_or_pass == 'y':
             player_hand.append(deal_cards(current_deck=deck))
-            print(f"Your cards: {player_hand}      Current total = {current_score(hand=player_hand)}")
-            print(f"Computer's first card: [{computer_hand[0]}]")
+            print(f"Your cards: \033[93m{player_hand}\033[0m      Current total = \033[93m{current_score(hand=player_hand)}\033[0m")
+            print(f"Computer's first card: \033[93m[{computer_hand[0]}]\033[0m")
             players_score = current_score(hand=player_hand)
             if players_score > 21:
                 print("Bust! Your score overshot, You lose.")
@@ -46,18 +44,18 @@ def play_blackjack():
         computer_hand.append(deal_cards(current_deck=deck))
     computers_score = current_score(hand=computer_hand)
     players_score = current_score(hand=player_hand)
-    print(f"Your final hand: {player_hand}      Your Score = {players_score}")
-    print(f"Computer's final hand: {computer_hand}      Computer's Score = {computers_score}")
+    print(f"Your final hand: \033[93m{player_hand}\033[0m      Your Score = \033[93m{players_score}\033[0m")
+    print(f"Computer's final hand: \033[93m{computer_hand}\033[0m      Computer's Score = \033[93m{computers_score}\033[0m")
     if players_score > 21:
-        print("Bust! Your score overshot, You lose.")
+        print("\033[91mBust! Your score overshot, You lose.\033[0m")
     elif computers_score > 21:
-        print("Bust! Computer's score overshot, You win!")
+        print("\033[92mBust! Computer's score overshot, You win!\033[0m")
     elif players_score > computers_score or players_score == 21:
-        print("You Win!")
+        print("\033[91mYou Win!\033[0m")
     elif players_score == computers_score:
-        print("It's a Tie!")
+        print("\033[91mIt's a Tie!\033[0m")
     else:
-        print("You Lose!")
+        print("\033[91mYou Lose!\033[0m")
 
 
 def deal_cards(current_deck):
